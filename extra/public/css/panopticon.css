@@ -1,0 +1,12 @@
+body {
+    background-color: white;
+}
+
+dd {
+    color: blue;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}

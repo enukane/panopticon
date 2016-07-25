@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Panopticon UI</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/panopticon.css" rel="stylesheet">
+
+</head>
+<body role="document">
+<div class="container-fluid" role="main">
+    <h3>Panopticon Control</h3>
+    <div class="container-fluid" id="group-general">
+        <div class="row">
+            <div class="col-xs-4">
+                <dl>
+                    <dt>State</dt>
+                    <dd id="dd-state"><span class="label label-default" id="label-state">INIT</span></dd>
+                </dl>
+            </div>
+            <div class="col-xs-4">
+                <dl>
+                    <dt>Date</dt>
+                    <dd id="dd-date">NaN</dd>
+                </dl>
+            </div>
+            <div class="col-xs-4">
+                <dl>
+                    <dt>Host Name</dt>
+                    <dd id="dd-hostname">NaN</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <dl>
+                    <dt>Disk Usage</dt>
+                    <dd id="dd-disk-usage">0 GB (0 %)</dd>
+                </dl>
+            </div>
+            <div class="col-xs-4">
+                <dl>
+                    <dt>Memory Usage</dt>
+                    <dd id="dd-memory-usage">0 MB (0 %)</dd>
+                </dl>
+            </div>
+            <div class="col-xs-4">
+                <dl>
+                    <dt>CPU Usage</dt>
+                    <dd id="dd-cpu-usage">0 %</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" id="group-status">
+        <div class="row">
+            <div class="col-xs-12">
+                <dl>
+                    <dt>File Name</dt>
+                    <dd id="dd-file-name">N/A</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <dl>
+                    <dt>File Size</dt>
+                    <dd id="dd-file-size">0 Bps</dd>
+                </dl>
+            </div>
+            <div class="col-xs-6">
+                <dl>
+                    <dt>File Size Growth (bps)</dt>
+                    <dd id="dd-file-size-bps">0 bps</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <dl>
+                    <dt>Current Channel</dt>
+                    <dd id="dd-current-channel">NaN</dd>
+                </dl>
+            </div>
+            <div class="col-xs-6">
+                <dl>
+                    <dt>Channel Walk Count</dt>
+                    <dd id="dd-channel-walk">NaN</dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <dl>
+                    <dt>Utilization Channel</dt>
+                    <dd id="dd-utilization-channel">NaN</dd>
+                </dl>
+            </div>
+            <div class="col-xs-6">
+                <dl>
+                    <dt>Utilization %</dt>
+                    <dd id="dd-utilization">NaN %</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid" id="group-control">
+        <div class="row">
+            <div class="col-xs-6">
+                <button type="button" class="btn btn-lg btn-success" id="button-start">Start</button>
+            </div>
+            <div class="col-xs-6">
+                <button type="button" class="btn btn-lg btn-danger" id="button-stop">Stop</button>
+            </div>
+        </div>
+    </div>
+    <!-- here comes js -->
+    <script src="js/jquery-3.1.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/script.js"></script>
+</div>
+</body>
+</html>
