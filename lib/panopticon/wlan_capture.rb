@@ -112,7 +112,7 @@ module Panopticon
         $log.debug("channel transition failed, added to black list (channel=#{next_channel})")
         @black_list << next_channel
         sleep 1
-        next_channel = pick_channel(next_channel)
+        next_channel = pick_channel(next_channel, channels)
       end
 
       @current_channel = next_channel
