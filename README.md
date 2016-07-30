@@ -24,6 +24,8 @@ Or install it yourself as:
 2. do chmod +x to /etc/init.d/panopticon
 3. do 'update-rc.d panopticon defaults' to start panopticon at boot time
 
+![screenshot here](https://pbs.twimg.com/media/CoQ-yB0VUAIFB7w.jpg)
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment. Run `bundle exec panopticon` to use the gem in this directory, ignoring other installed copies of this gem.
