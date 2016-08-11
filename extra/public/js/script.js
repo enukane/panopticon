@@ -472,6 +472,9 @@ $(window).load("load", function() {
 });
 
 function update_util_chart(chan, util) {
+    if (chan == null) {
+        return;
+    }
     chan_str = chan.toString();
 
     color =
