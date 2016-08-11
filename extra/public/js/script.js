@@ -165,7 +165,7 @@ function update_channel_info(current, walk) {
 }
 
 function update_utilization_info(channel, utilization) {
-    update_text("#dd-utilization-channel", utilization);
+    update_text("#dd-utilization-channel", channel);
     update_text("#dd-utilization", utilization);
 
     update_util_chart(channel, utilization);
