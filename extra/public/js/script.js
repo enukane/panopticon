@@ -2,6 +2,8 @@
  * Created by enukane on 2016/07/21.
  */
 
+var _demo_ = false;
+
 /* common utility */
 
 function log_debug(msg) {
@@ -165,6 +167,8 @@ function update_channel_info(current, walk) {
 function update_utilization_info(channel, utilization) {
     update_text("#dd-utilization-channel", utilization);
     update_text("#dd-utilization", utilization);
+
+    update_util_chart(channel, utilization);
 }
 
 /*
@@ -322,6 +326,10 @@ function update_status(json) {
         complete: function() {
             log_periodic("schedule next");
             setTimeout(worker, 500);
+
+            if (_demo_ == true) {
+                update_util_chart(Math.ceil(Math.random() * 100) , Math.random() * 100);
+            }
         }
     });
 })();
@@ -371,6 +379,130 @@ $("#button-stop").on('click', function (e) {
         }
     })
 });
+
+var _util_table = [
+    // 2.4GHz
+    {label: "1", y: 0},
+    {label: "2", y: 0},
+    {label: "3", y: 0},
+    {label: "4", y: 0},
+    {label: "5", y: 0},
+    {label: "6", y: 0},
+    {label: "7", y: 0},
+    {label: "8", y: 0},
+    {label: "9", y: 0},
+    {label: "10", y: 0},
+    {label: "11", y: 0},
+    {label: "12", y: 0},
+    {label: "13", y: 0},
+
+    // 5.2GHz
+    {label: "34", y: 0},
+    {label: "36", y: 0},
+    {label: "38", y: 0},
+    {label: "40", y: 0},
+    {label: "42", y: 0},
+    {label: "44", y: 0},
+    {label: "46", y: 0},
+    {label: "48", y: 0},
+
+    // 5.3GHz
+    {label: "52", y: 0},
+    {label: "56", y: 0},
+    {label: "60", y: 0},
+    {label: "64", y: 0},
+
+    // 5.6GHz
+    {label: "100", y: 0},
+    {label: "104", y: 0},
+    {label: "108", y: 0},
+    {label: "112", y: 0},
+    {label: "116", y: 0},
+    {label: "120", y: 0},
+    {label: "124", y: 0},
+    {label: "128", y: 0},
+    {label: "132", y: 0},
+    {label: "136", y: 0},
+    {label: "140", y: 0},
+    {label: "144", y: 0},
+    {label: "149", y: 0},
+    {label: "153", y: 0},
+    {label: "157", y: 0},
+    {label: "161", y: 0},
+    {label: "165", y: 0},
+];
+
+var COLOR_GRADE = {
+    "RED": 90,
+    "ORANGE": 70,
+    "YELLOW": 50,
+    "GREEN": 0
+};
+
+var _util_chart = null;
+
+$(window).load("load", function() {
+    _util_chart = new CanvasJS.Chart("utilChartContainer", {
+        animationEnabled: true,
+        axisX: {
+            interval: 1,
+            gridThickness: 0,
+            labelFontSize: 15,
+            labelFontStyle: "normal",
+            labelFontWeight: "normal",
+        },
+        axisY: {
+            interlacedColor: "rgba(1.77,101,.2",
+            gridColor: "rgba(1.77,101,.1)",
+            minimum: 0,
+            maximum: 100
+        },
+        data: [
+            {
+                type: "column",
+                name: "utilization",
+                //axisYType: "secondary",
+                color: "#014D65",
+                dataPoints: _util_table
+            }
+        ]
+    });
+
+    _util_chart.render();
+});
+
+function update_util_chart(chan, util) {
+    chan_str = chan.toString();
+
+    color =
+        util >= COLOR_GRADE["RED"] ? "#FF0000" :
+        util >= COLOR_GRADE["ORANGE"] ? "#FFA500" :
+        util >= COLOR_GRADE["YELLOW"] ? "#FFd700" :
+        "#008000";
+
+    var idx = -1;
+
+    for (var i = 0; i < _util_table.length; i++) {
+        if (_util_table[i].label == chan_str) {
+            console.log("found at " + i);
+            idx = i;
+            _util_table[i].y = util;
+            _util_table[i].color = color;
+            break;
+        }
+    }
+
+    if (idx == -1) {
+        log_warn("could not find utiltable entry in channel " + chan_str);
+        return;
+    }
+
+    if (_util_chart == null) {
+        return;
+    }
+
+    _util_chart.render();
+}
 
 
 /* init */

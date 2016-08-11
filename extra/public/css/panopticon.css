@@ -2,11 +2,14 @@ body {
     background-color: white;
 }
 
-dd {
-    color: blue;
+dl {
+    margin: 5px;
 }
 
-* {
-    margin: 0px;
-    padding: 0px;
+dt {
+    font-size: 100%;
+}
+dd {
+    color: blue;
+    font-size: 95%;
 }
