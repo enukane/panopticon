@@ -8,6 +8,7 @@ module Panopticon
 
     DEFAULT_IFNAME="wlan0"
     DEFAULT_CAPTURE_PATH="/cap"
+    DEFAULT_LOG_FILE="/var/log/panopticond.log"
 
     def self.default_options
       {
@@ -20,6 +21,9 @@ module Panopticon
         # capture parameters
         :ifname => DEFAULT_IFNAME,
         :capture_path => DEFAULT_CAPTURE_PATH,
+
+        # log
+        :log_file => DEFAULT_LOG_FILE,
       }
     end
 

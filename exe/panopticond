@@ -26,6 +26,11 @@ opt.on("-c", "--capture-path [CAPTUREPATH=#{Panopticon::Daemon::DEFAULT_CAPTURE_
   OPTS[:capture_path] = v
 }
 
+opt.on('-l', "--log-file [LOG_FILE=#{Panopticon::Daemon::DEFAULT_LOG_FILE}]",
+       "log output file (accepts 'STDOUT', 'STDERR')") {|v|
+  OPTS[:log_file] = v
+}
+
 (class<<self;self;end).module_eval do
   define_method(:usage) do |msg|
     puts opt.to_s
@@ -43,5 +48,5 @@ rescue
   usage $!.to_s
 end
 
-$log = Log.new()
+$log = Log.new(:output => OPTS[:log_file])
 Panopticon::Daemon.new(OPTS).run
