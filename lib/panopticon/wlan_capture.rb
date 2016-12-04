@@ -94,7 +94,7 @@ module Panopticon
       unless system("ip link set #{@ifname} up")
         raise "failed to turn up #{@ifname}"
       end
-      unless system("iw wlan0 set channel #{@current_channel}")
+      unless system("iw #{@ifname} set channel #{@current_channel}")
         raise "failed to set channel #{@current_channel} on #{@ifname}"
       end
     end
