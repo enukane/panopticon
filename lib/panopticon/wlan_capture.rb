@@ -80,7 +80,7 @@ module Panopticon
     end
 
     def init_device
-      unless @ifname.match(/^wlan\d+$/)
+      unless @ifname.match(/^(wlan\d+|wlx.+)$/)
         $log.debug("non-wlan device skips device initialization")
         return
       end
@@ -100,7 +100,7 @@ module Panopticon
     end
 
     def move_channel current, channels
-      unless @ifname.match(/^wlan\d+$/)
+      unless @ifname.match(/^(wlan\d+|wlx.+)$/)
         $log.debug("non-wlan device skips channel transition")
         return
       end

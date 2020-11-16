@@ -1,5 +1,6 @@
 module Panopticon
   require "panopticon/log"
+  require "json"
 
   class Daemon
     DEFAULT_CONFIG_PATH="/etc/panopticon.conf"
@@ -36,12 +37,15 @@ module Panopticon
     end
 
     def run
+      $log = Log.new(:output => @arg[:log_file])
       Panopticon::APIServer.run!(@arg)
     end
 
     def read_config path
-      # notimp
-      @arg
+      data = File.read(path)
+      conf = JSON.parse(data, :symbolize_names => true)
+      @arg = @arg.merge(conf)
+      return @arg
     end
   end
 end

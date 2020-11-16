@@ -75,7 +75,7 @@ module Panopticon
     end
 
     def current_data
-      unless @ifname.match(/^wlan\d+$/)
+      unless @ifname.match(/^(wlan\d+|wlx.+)$/)
         $log.debug("non-wlan skips utilization acquirement")
         return [0, 0, 0, 0]
       end
@@ -117,7 +117,7 @@ module Panopticon
     end
 
     def interface_exists?(ifname)
-      return system("ifconfig #{ifname} 1>/dev/null 2>&1")
+      return system("ip link show ${ifname} 1>/dev/null 2>&1")
     end
   end
 end

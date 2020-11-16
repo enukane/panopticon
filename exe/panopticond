@@ -48,5 +48,4 @@ rescue
   usage $!.to_s
 end
 
-$log = Log.new(:output => OPTS[:log_file])
 Panopticon::Daemon.new(OPTS).run

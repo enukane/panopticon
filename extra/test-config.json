@@ -1,0 +1,6 @@
+{
+	"port": 8080,
+	"ifname": "wlxcce1d5396dfc",
+	"capture_path": "/tmp/",
+	"log_file": "/tmp/panopticond.log"
+}
